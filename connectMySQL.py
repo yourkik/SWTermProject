@@ -7,13 +7,14 @@ conn = pymysql.connect(host='127.0.0.1', user='root', password='12345', db='Sche
 cur = conn.cursor()
 
 # 3. 테이블 만들기 - 0이 나오면 잘 되는 것
-cur.execute("CREATE TABLE userTable (id char(4), userName char(15), email char(20), birthYear int)" )
+cur.execute("Drop table users")
+cur.execute("CREATE TABLE users (user_id int(20) PRIMARY KEY, userName char(20), email char(30), birth int(8))" )
 
 # 4. 데이터 입력하기 - 1이 나오면 잘 되는 것
-cur.execute("INSERT INTO userTable VALUES('hong', '홍지윤', 'hong@naver.com', 1996)")
-cur.execute("INSERT INTO userTable VALUES('kim', '김태연', 'kim@daum.com', 2011)")
-cur.execute("INSERT INTO userTable VALUES('star', '별사랑', 'star@paran.com', 1990)")
-cur.execute("INSERT INTO userTable VALUES('yang', '양지은', 'yang@gmail.com', 1993)")
+cur.execute("INSERT INTO users VALUES(1, '홍지윤', 'hong@naver.com', 19960410)")
+cur.execute("INSERT INTO users VALUES(2, '김태연', 'kim@daum.com', 20110229)")
+cur.execute("INSERT INTO users VALUES(3, '별사랑', 'star@paran.com', 19901118)")
+cur.execute("INSERT INTO users VALUES(4, '양지은', 'yang@gmail.com', 19931223)")
 
 # 5. 입력한 데이터 저장하기
 conn.commit()
